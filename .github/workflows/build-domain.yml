@@ -1,14 +1,11 @@
-name: Build Domain Library
+name: Build PR
 
 on:
   pull_request:
-    paths:
-      - 'domain/**'
   push:
     branches-ignore:
+      - main
       - master
-    paths:
-      - 'domain/**'
 
 jobs:
   build:
@@ -26,15 +23,13 @@ jobs:
           cache: maven
 
       - name: Build e Test
-        run: |
-          cd domain
-          mvn clean verify
+        run: mvn clean verify
 
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: domain/target/surefire-reports/
+          path: target/surefire-reports/
           retention-days: 7
 

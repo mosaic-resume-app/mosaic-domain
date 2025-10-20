@@ -1,12 +1,10 @@
-name: Publish Domain Library
+name: Publish Library
 
 on:
   push:
     branches:
       - main
       - master
-    paths:
-      - 'domain/**'
   release:
     types: [created]
   workflow_dispatch:
@@ -28,23 +26,23 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
 
       - name: Build e Test
-        run: |
-          cd domain
-          mvn clean test
+        run: mvn clean test
 
       - name: Publish para GitHub Packages
-        run: |
-          cd domain
-          mvn deploy -DskipTests
+        run: mvn deploy -DskipTests
         env:
+          GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload JAR como artifact
         uses: actions/upload-artifact@v4
         with:
           name: domain-library
-          path: domain/target/*.jar
+          path: target/*.jar
           retention-days: 30
 

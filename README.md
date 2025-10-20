@@ -39,29 +39,14 @@ Biblioteca compartilhada contendo as entidades de domínio do projeto Mosaic Res
 
 ## 🚀 Publicação e Instalação
 
-### 🤖 CI/CD Automatizado (RECOMENDADO)
-
-A biblioteca é publicada **automaticamente** via GitHub Actions quando você faz push para `main`:
-
-```bash
-git add domain/
-git commit -m "feat: nova funcionalidade"
-git push origin main
-# ✨ GitHub Actions publica automaticamente!
-```
-
-**📖 Guia completo:** [CI-CD-SETUP.md](./CI-CD-SETUP.md)
-
-### 📤 Publicação Manual (Alternativa)
-
-Se precisar publicar manualmente:
+### 📤 Publicar no GitHub Packages (Recomendado)
 
 ```powershell
 cd domain
 .\publish-github.ps1
 ```
 
-Ou:
+Ou manualmente:
 
 ```bash
 mvn clean deploy
@@ -180,27 +165,16 @@ Isso é gerenciado pela classe `DomainConfiguration` com `@EnableJpaAuditing`.
 
 ## 📖 Documentação
 
-- **[GUIA-RAPIDO.md](./GUIA-RAPIDO.md)** - ⚡ Comece aqui! Guia rápido para desenvolvedores
-- **[CI-CD-SETUP.md](./CI-CD-SETUP.md)** - 🤖 CI/CD automatizado com GitHub Actions
-- **[SOLUCAO-FINAL.md](./SOLUCAO-FINAL.md)** - 🔧 Solução para erros e problemas comuns
-- **[EXEMPLO-USER-SERVICE.md](./EXEMPLO-USER-SERVICE.md)** - 💡 Exemplo prático de uso em microserviço
-- **[GITHUB-PACKAGES-SETUP.md](./GITHUB-PACKAGES-SETUP.md)** - 📦 Setup manual do GitHub Packages
-- **[LIBRARY-USAGE.md](./LIBRARY-USAGE.md)** - 🌐 Opções alternativas (Maven Central, etc.)
+- **[GITHUB-PACKAGES-SETUP.md](./GITHUB-PACKAGES-SETUP.md)** - Guia completo para publicar e usar no GitHub Packages
+- **[EXEMPLO-USER-SERVICE.md](./EXEMPLO-USER-SERVICE.md)** - Exemplo prático de uso em um microserviço
+- **[LIBRARY-USAGE.md](./LIBRARY-USAGE.md)** - Opções alternativas de publicação (Maven Central, etc.)
 
 ## 🎯 Próximos Passos
 
-### Para Novos Desenvolvedores
-1. ✅ Leia o [GUIA-RAPIDO.md](./GUIA-RAPIDO.md)
-2. ✅ Configure o `settings.xml` para baixar do GitHub Packages
-3. ✅ Use a biblioteca em seus microserviços
-
-### Para Contribuir
-1. ✅ Faça suas mudanças no `domain`
-2. ✅ Commit e push para uma branch
-3. ✅ Crie PR - o CI valida automaticamente
-4. ✅ Após merge, o CI publica automaticamente!
-
-Veja detalhes em [CI-CD-SETUP.md](./CI-CD-SETUP.md)
+1. ✅ Substitua `SEU_USUARIO_GITHUB` no `pom.xml` pelo seu usuário do GitHub
+2. ✅ Configure o GitHub Personal Access Token (veja [GITHUB-PACKAGES-SETUP.md](./GITHUB-PACKAGES-SETUP.md))
+3. ✅ Execute `.\publish-github.ps1` para publicar
+4. ✅ Use a biblioteca em seus microserviços (veja [EXEMPLO-USER-SERVICE.md](./EXEMPLO-USER-SERVICE.md))
 
 ## 🤝 Contribuindo
 
