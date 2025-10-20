@@ -34,7 +34,7 @@ jobs:
         run: mvn clean test
 
       - name: Publish para GitHub Packages
-        run: mvn deploy -DskipTests
+        run: mvn deploy -DskipTests -Dmaven.deploy.skip=false -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/mosaic-resume-app/mosaic
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
