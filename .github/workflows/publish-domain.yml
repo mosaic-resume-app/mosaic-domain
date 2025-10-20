@@ -1,0 +1,50 @@
+name: Publish Domain Library
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'domain/**'
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build e Test
+        run: |
+          cd domain
+          mvn clean test
+
+      - name: Publish para GitHub Packages
+        run: |
+          cd domain
+          mvn deploy -DskipTests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload JAR como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: domain-library
+          path: domain/target/*.jar
+          retention-days: 30
+

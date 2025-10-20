@@ -1,0 +1,41 @@
+name: Build Domain Library
+
+on:
+  pull_request:
+    paths:
+      - 'domain/**'
+  push:
+    branches-ignore:
+      - main
+      - master
+    paths:
+      - 'domain/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build e Test
+        run: |
+          cd domain
+          mvn clean verify
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: domain/target/surefire-reports/
+          retention-days: 7
+

@@ -114,6 +114,11 @@
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/mosaic-resume-app/mosaic</url>
 		</repository>
+		<snapshotRepository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/mosaic-resume-app/mosaic</url>
+		</snapshotRepository>
 	</distributionManagement>
 	
 </project>
