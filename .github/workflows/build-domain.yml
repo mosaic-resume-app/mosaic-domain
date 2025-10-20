@@ -6,7 +6,6 @@ on:
       - 'domain/**'
   push:
     branches-ignore:
-      - main
       - master
     paths:
       - 'domain/**'
