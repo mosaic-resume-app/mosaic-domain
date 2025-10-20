@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.dev.ppaiva.mosaic</groupId>
 	<artifactId>domain</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3</version>
 	<packaging>jar</packaging>
 	<name>Mosaic Domain</name>
 	<description>Shared domain models for Mosaic Resume App</description>
