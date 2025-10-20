@@ -37,24 +37,7 @@ Biblioteca compartilhada contendo as entidades de domínio do projeto Mosaic Res
   - `SENIOR`
   - `SPECIALIST`
 
-## 🚀 Publicação e Instalação
-
-### 📤 Publicar no GitHub Packages (Recomendado)
-
-```powershell
-cd domain
-.\publish-github.ps1
-```
-
-Ou manualmente:
-
-```bash
-mvn clean deploy
-```
-
-**📖 Guia completo:** [GITHUB-PACKAGES-SETUP.md](./GITHUB-PACKAGES-SETUP.md)
-
-### 📥 Usar em outros projetos
+## 🚀 Instalação
 
 Adicione no `pom.xml` do seu projeto:
 
@@ -62,7 +45,7 @@ Adicione no `pom.xml` do seu projeto:
 <repositories>
     <repository>
         <id>github</id>
-        <url>https://maven.pkg.github.com/SEU_USUARIO_GITHUB/mosaic</url>
+        <url>https://maven.pkg.github.com/mosaic-resume-app/mosaic</url>
     </repository>
 </repositories>
 
@@ -73,15 +56,6 @@ Adicione no `pom.xml` do seu projeto:
         <version>0.0.1-SNAPSHOT</version>
     </dependency>
 </dependencies>
-```
-
-### 💻 Instalação Local (Desenvolvimento)
-
-Para usar apenas na sua máquina:
-
-```bash
-cd domain
-mvn clean install
 ```
 
 ## 🔧 Configuração no Projeto Consumidor
